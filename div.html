@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <div class="container">
+      <form>
+        <label for="username">Имя пользователя:</label>
+        <input type="text" id="username" name="username" required><br>
+
+        <label for="email">Электронная почта:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <button id="submit" type="submit">Зарегистрироваться</button>
+      </form>
+    </div>
+
+    <script>
+      var form = document.querySelector('form');
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Получаем значения полей формы
+        var username = document.getElementById('username').value;
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+
+        // Сохраняем данные в LocalStorage
+        var userData = {username: username, email: email, password: password};
+        localStorage.setItem('userData', JSON.stringify(userData));
+
+        // Перенаправляем пользователя на страницу входа
+        window.location.href = 'https://classic.minecraft.net/';
+      });
+    </script>
+  </body>
+</html>
